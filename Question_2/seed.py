@@ -35,7 +35,7 @@ with sqlite3.connect(DBFILENAME) as conn:
 
 # Write a SQL SELECT statement to select all employees in New York that make over 70000 a year
 
-    SQL="""SELECT * FROM employee WHERE Salary > 70000 AND branchpk = 1"""
+    SQL="""SELECT * FROM employee JOIN branch ON branch.branchpk = employee.branchpk WHERE Salary > 70000 AND branch.City = 'New York'"""
 
     cur.execute(SQL)
     result = cur.fetchall()
